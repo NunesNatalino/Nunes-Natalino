@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato - Nunes Natalino</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; background: #f4f4f4; }
+    header { background: #005792; color: #fff; padding: 20px; text-align: center; }
+    .container { max-width: 600px; margin: 20px auto; background: #fff; padding: 40px; border-radius: 8px; }
+    label { display: block; margin-bottom: 8px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ccc; }
+    button { background: #005792; color: #fff; border: none; padding: 12px 28px; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #003f5c; }
+    footer { text-align: center; padding: 20px; background: #005792; color: #fff; margin-top: 40px; }
+    .success { color: green; margin-bottom: 20px; }
+  </style>
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+      document.getElementById('mensagem-sucesso').style.display = 'block';
+      document.getElementById('form-contato').reset();
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Contato - Nunes Natalino</h1>
+    <p>Entre em contato para dúvidas, sugestões ou parcerias.</p>
+  </header>
+
+  <div class="container">
+    <form id="form-contato" onsubmit="enviarFormulario(event)">
+      <div id="mensagem-sucesso" class="success" style="display:none;">Mensagem enviada com sucesso!</div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p><a href="index.html">← Voltar para a página inicial</a></p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Nunes Natalino. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

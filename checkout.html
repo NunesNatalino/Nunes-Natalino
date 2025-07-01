@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Nunes Natalino</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; background: #f4f4f4; }
+    header { background: #005792; color: #fff; padding: 20px; text-align: center; }
+    .container { max-width: 600px; margin: 20px auto; background: #fff; padding: 40px; border-radius: 8px; }
+    label { display: block; margin-bottom: 8px; font-weight: bold; }
+    input { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #ccc; }
+    button { background: #005792; color: #fff; border: none; padding: 12px 28px; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #003f5c; }
+    .success { color: green; margin-bottom: 20px; }
+    .total { font-size: 20px; font-weight: bold; text-align: right; margin-bottom: 20px; }
+    footer { text-align: center; padding: 20px; background: #005792; color: #fff; margin-top: 40px; }
+  </style>
+  <script>
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    function mostrarTotal() {
+      let total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+      document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
+    }
+    function finalizarCompra(event) {
+      event.preventDefault();
+      document.getElementById('mensagem-sucesso').style.display = 'block';
+      localStorage.removeItem('carrinho');
+      setTimeout(() => { window.location.href = 'index.html'; }, 2000);
+    }
+    window.onload = mostrarTotal;
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+    <p>Finalize sua compra e comece a aprender agora mesmo!</p>
+  </header>
+  <div class="container">
+    <form onsubmit="finalizarCompra(event)">
+      <div id="mensagem-sucesso" class="success" style="display:none;">Compra realizada com sucesso! Redirecionando...</div>
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" required />
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+      <div class="total" id="total">Total: R$ 0,00</div>
+      <button type="submit">Finalizar Compra</button>
+    </form>
+    <p><a href="carrinho.html">← Voltar para o carrinho</a></p>
+  </div>
+  <footer>
+    <p>&copy; 2025 Nunes Natalino. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
